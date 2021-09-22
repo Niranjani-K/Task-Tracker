@@ -16,8 +16,15 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.set('view engine' , 'ejs');
 app.use(express.static("public"));
-app.listen(3000,function(){
-    console.log("Server started at port 3000");
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
+
+app.listen(port,function(){
+    console.log("Server started succesfully");
 })
 mongoose.connect("mongodb+srv://admin-niranjani:8Min-characters@cluster0.rubb4.mongodb.net/todolistDB",{useNewUrlParser:true});
 const itemsSchema = {
