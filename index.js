@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine' , 'ejs');
 app.use(express.static("public"));
 
-let port = process.env.PORT;
+let port = process.env.PORT || 3000;
 
 app.listen(port);
 
