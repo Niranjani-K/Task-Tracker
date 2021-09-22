@@ -17,9 +17,13 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine' , 'ejs');
 app.use(express.static("public"));
 
-let port = process.env.PORT || 3000;
-
-app.listen(port);
+// let port = process.env.PORT;
+// if (port == null || port == "") {
+//   port = 3000;
+// }
+const port = process.env.PORT || "1337";
+app.set("port", port);
+// app.listen(port);
 
 app.listen(port,function(){
     console.log("Server started succesfully");
