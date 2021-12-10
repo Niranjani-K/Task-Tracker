@@ -12,6 +12,7 @@ const app = express()
 const bodyParser = require('body-parser');
 const { response } = require('express');
 const mongoose = require('mongoose');
+var dotenv = require('dotenv');
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.set('view engine' , 'ejs');
@@ -21,14 +22,17 @@ app.use(express.static("public"));
 // if (port == null || port == "") {
 //   port = 3000;
 // }
-const port = process.env.PORT || "1337";
+
+const port = process.env.PORT || "3000";
 app.set("port", port);
 // app.listen(port);
 
 app.listen(port,function(){
     console.log("Server started succesfully");
 })
-mongoose.connect("mongodb+srv://admin-niranjani:8Min-characters@cluster0.rubb4.mongodb.net/todolistDB",{useNewUrlParser:true});
+dotenv.config();
+const url = process.env.MONGODB_URL;
+mongoose.connect(url,{useNewUrlParser:true});
 const itemsSchema = {
     name:String
 };
