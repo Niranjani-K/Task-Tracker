@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = UTF-8 >
+<link rel = "stylesheet" href = "css/styles.css">
+<link rel = "stylesheet" type = "text/css" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<title>TASKS</title>
+</head>
+<body>
+    <div class = "box" id = "heading">
+    <h1 > <%=currDay%> </h1>
+    </div>
+
+<div class = "box">
+    <%newItemAdd.forEach(function(item){ %>
+    <form action = "/delete" method = "post" >
+    
+    <div class = "item">
+        <button type="submit" class = "todoLi" name = "toRemove" value = "<%= item._id %>"  >
+            <i class = "fa fa-trash"></i>
+            </button>
+        <input type = "checkbox" >
+        <p> <%= item.name %></p>
+    
+    </div>
+    <input type = "hidden" name = "listName" value = "<%= currDay %>">
+   </form>
+    <%})%>
+
+
+<form method = "post" class = "item" action  = "/">
+<input type = "text" placeholder = "NEW ITEM" name = "newItem" autocomplete="off">
+<button name = "button" type = "submit" id = "addlist" value = "<%= currDay %>">+</button>
+</form>
+</div>
+</body>
+</html>
